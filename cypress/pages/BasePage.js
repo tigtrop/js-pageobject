@@ -19,6 +19,14 @@ class BasePage {
     clickHomeButton(){
         this.getHomeButton().click();
     }
+
+    clickOurProductsButton() {
+        this.getOurProductsButton().click();
+    }
+
+    clickContactUsButton() {
+        this.getContactUsButton().click();
+    }
 }
 
 export default BasePage;

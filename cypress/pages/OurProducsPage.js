@@ -5,6 +5,10 @@ class OurProductsPage extends BasePage {
         cy.visit('http://www.webdriveruniversity.com/Page-Object-Model/products.html')
     }
 
+    getCategories() {
+        return cy.get('.thumbnail');
+    }
+
     getSpecialOffersTile() {
         return cy.get('#container-special-offers');
     }
@@ -123,10 +127,99 @@ getExitModalButton() {
     return cy.get('[data-dismiss="modal"].close');
 }
 
+getTitles() {
+    return cy.get('.sub-heading');
+}
+
+getImages() {
+    return cy.get('.caption');
+}
+
 /////////// Methods
 
+clickSpecialOffersTitle() {
+    this.getSpecialOffersTitle().click();
+}
 
+clickCamerasTitle() {
+    this.getCamerasTitle().click();
+}
 
+clickNewLaptopsTitle(){
+    this.getNewLaptopsTitle().click();
+}
+
+clickUsedLaptopsTitle(){
+    this.getUsedLaptopsTitle().click();
+}
+
+clickGameConsoleTitle(){
+    this.getCamerasTitle().click();
+}
+
+clickComponentsTitle(){
+    this.getComponentsTitle().click();
+}
+
+clickDesktopSystemsTitle(){
+    this.getDesktopSystemsTitle().click();
+}
+
+clickAudioTitle(){
+    this.getAudioTitle().click();
+}
+
+clickSpecialOffersImg() {
+    this.getSpecialOffersImg().click();
+}
+
+clickCamerasImg() {
+    this.getCamerasImg().click();
+}
+
+clickNewLaptopsImg(){
+    this.getNewLaptopsTitle().click();
+}
+
+clickUsedLaptopsImg(){
+    this.getUsedLaptopsImg().click();
+}
+
+clickGameConsoleImg(){
+    this.getCamerasImg().click();
+}
+
+clickComponentsImg(){
+    this.getComponentsImg().click();
+}
+
+clickDesktopSystemsImg(){
+    this.getDesktopSystemsImg().click();
+}
+
+clickAudioImg(){
+    this.getAudioImg().click();
+}
+
+clickProceedButton() {
+    this.getProceedModalButton().click();
+}
+
+clickCloseModalButton() {
+    this.getCloseModalButton().click();
+}
+
+clickExitModalButton() {
+    this.getExitModalButton().click();
+}
+
+clickTitles(x) {
+    this.getTitles().eq(x).click();
+}
+
+clickImages(x) {
+    this.getImages().eq(x).click();
+}
 }
 
 export default OurProductsPage;

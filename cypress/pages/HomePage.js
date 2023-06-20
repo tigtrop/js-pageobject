@@ -14,7 +14,7 @@ class HomePage extends BasePage {
     }
 
     getFindOutMoreButton() {
-        return cy.visit('#button-find-out-more');
+        return cy.get('#button-find-out-more');
     }
 
     getWelcomeToSiteModal() {
@@ -49,7 +49,7 @@ class HomePage extends BasePage {
         return cy.get('.div-star').eq(0);
     }
 
-    getGreatServicText() {
+    getGreatServiceText() {
         return cy.get('.caption p').contains('Lorem ipsum');
     }
 
@@ -70,7 +70,7 @@ class HomePage extends BasePage {
     }
 
     getCarouselLeftButton() {
-        return cy.get('.left');
+        return cy.get('.left.carousel-control');
     }
 
     getCarouselRightButton() {
@@ -78,19 +78,66 @@ class HomePage extends BasePage {
     }
 
     getCarouselFirstImage() {
-        return cy.get('li[data-slide-to]').eq(0);
+        return cy.get('[src="../img/amp.svg"]');
     }
 
     getCarouselSecondImage() {
-        return cy.get('li[data-slide-to]').eq(1);
+        return cy.get('[src="../img/boombox.svg"]');
     }
 
     getCarouselThirdImage() {
-        return cy.get('li[data-slide-to]').eq(3);
+        return cy.get('[src="../img/nintendo.svg"]');
     }
 
+    getCarouselDotButton1() {
+        return cy.get('[data-slide-to="0"]');
+    }
+
+    getCarouselDotButton2() {
+        return cy.get('[data-slide-to="1"]');
+    }
+
+    getCarouselDotButton3() {
+        return cy.get('[data-slide-to="2"]');
+    }
+
+    ///////////// Methods
+
+    clickLeftCarouselButton() {
+        this.getCarouselLeftButton().wait(1000).click();
+    }
     
-    
+    clickRightCarouselButton() {
+        this.getCarouselRightButton().wait(1000).click();
+    }
+
+    clickCarouselDotButton1() {
+        this.getCarouselDotButton1().wait(1000).click();
+    }
+
+    clickCarouselDotButton2() {
+        this.getCarouselDotButton2().wait(1000).click();
+    }
+
+    clickCarouselDotButton3() {
+        this.getCarouselDotButton3().wait(1000).click();
+    }
+
+    clickFindOutMoreButton() {
+        this.getFindOutMoreButton().click();
+    }
+
+    clickFindOutMoreModalButton() {
+        this.getFindOutModalButton().click();
+    }
+
+    clickCloseModalButton() {
+        this.getCloseModalButton().click();
+    }
+
+    clickExitModalButton() {
+        this.getExitModalButton().click();
+    }
 }
 
 export default HomePage;
