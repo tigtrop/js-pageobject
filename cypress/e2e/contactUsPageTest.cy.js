@@ -59,9 +59,3 @@ describe('Contact Us page tests', () => {
     });
 
 });
-
-// 1- succeses all fields
-//  2. Empty fields
-// 3. without email
-// 4. Reset
-// witout comment
