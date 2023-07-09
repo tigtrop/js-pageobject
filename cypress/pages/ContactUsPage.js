@@ -3,67 +3,48 @@ import BasePage from "./BasePage"
 
 class ContactUsPage extends BasePage {
 
-    getFirstName() {
+    static visit() {
+        cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html');
+    }
+
+    static get getFirstName() {
         return cy.get('input[name="first_name"]')
     }
 
-    getLastName() {
+    static get getLastName() {
         return cy.get('input[name="last_name"]')
     }
 
-    getEmail() {
+    static get getEmail() {
         return cy.get('input[name="email"]')
     }
 
-    getComment() {
+    static get getComment() {
         return cy.get('textarea[name="message"]')
     }
 
-    getSubmitButton() {
+    static get getSubmitButton() {
         return cy.get('#form_buttons').contains('SUBMIT');
     }
 
-    getResetButton() {
+    static get getResetButton() {
         return cy.get('[type="reset"]');
     }
 
-    getContactUsHeader() {
+    static get getContactUsHeader() {
         return cy.get('[name="contactme"]')
     }
 
-    getSuccessSubmitMessage(){
+    static get getSuccessSubmitMessage(){
         return cy.get('div#contact_reply > h1').contains('Thank You for your Message!');
     }
 
-    fillContactUsForm(users) {
-        if (users.firstName) {
-            this.getFirstName().type(users.firstName);
-        }
-        if (users.lastName) {
-            this.getLastName().type(users.lastName);
-        }
-        if (users.email) {
-            this.getEmail().type(users.email);
-        }
-        if (users.comment) {
-            this.getComment().type(users.comment);
-        }
-    }
-
-    getInvalidEmailError(){
+    static get getInvalidEmailError(){
         return cy.contains(errors.emailError);
     }
 
-    getAllFieldsAreRequiredError(){
+    static get getAllFieldsAreRequiredError(){
         return cy.contains(errors.allFieldsError);
-    }
-
-    clickSumbitButton() {
-        this.getSubmitButton().click();
-    }
-
-    clickResetButon() {
-        this.getResetButton().click();
     }
 
 }
