@@ -1,7 +1,8 @@
 import ContactUsPage from "../../pages/ContactUsPage";
 import { users } from "../../test-data/users";
+import { GeneralStep } from "./GeneralStep";
 
-export class ContactUsStep {
+export class ContactUsStep extends GeneralStep {
     visit() {
         ContactUsPage.visit();
         cy.url().should('contain', 'contactus');
