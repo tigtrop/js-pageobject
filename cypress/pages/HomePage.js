@@ -1,143 +1,106 @@
 import BasePage from "./BasePage";
 
 class HomePage extends BasePage {
-    visitHomePage() {
+    static visit() {
         cy.visit('http://www.webdriveruniversity.com/Page-Object-Model/index.html');
     }
 
-    getWhoAreWeTitle() {
-        return cy.get('.sub-heading').contains('Who Are We?');
+    static get getWhoAreWeTitle() {
+        return cy.xpath('//p[@class="sub-heading" and contains(text(), "Who Are We?")]');
     }
 
-    getWhoAreWeText() {
-        return cy.get('.caption p').contains('Lorem ipsum');
+    static get getWhoAreWeText() {
+        return cy.xpath('(//p[contains(text(), "Lorem")])[1]');
     }
 
-    getFindOutMoreButton() {
+    static get getFindOutMoreButton() {
         return cy.get('#button-find-out-more');
     }
 
-    getWelcomeToSiteModal() {
+    static get getWelcomeToSiteModal() {
         return cy.get('.modal-content');
     }
 
-    getFindOutModalButton() {
-        return cy.get('[data-dismiss="modal"]').contains('Find Out More');
+    static get getFindOutModalButton() {
+        return cy.xpath('//button[text()="Find Out More"]');
     }
 
-    getCloseModalButton() {
-        return cy.get('[data-dismiss="modal"]').contains('Close');
+    static get getCloseModalButton() {
+        return cy.xpath('//button[text()="Close"]');
     }
 
-    getExitModalButton() {
+    static get getExitModalButton() {
         return cy.get('[data-dismiss="modal"].close');
     }
 
-    getWhyChooseUsTitle() {
-        return cy.get('.sub-heading').contains('Why Choose Us?');
+    static get getWhyChooseUsTitle() {
+        return cy.xpath('//p[@class="sub-heading" and text()="Why Choose Us?"]');
     }
 
-    getWhyChooseUsText() {
-        return cy.get('.caption p').contains('Lorem ipsum');
+    static get getWhyChooseUsText() {
+        return cy.xpath('(//div[@class="caption"]/p[contains(text(), "Lorem")])[3]');
     }
 
-    getGreatServiceTitle() {
-        return cy.get('.sub-heading').contains('GREAT SERVICE!');
+    static get getGreatServiceTitle() {
+        return cy.xpath('//p[@class="sub-heading" and text()="GREAT SERVICE!"]');
     }
 
-    getGreatServiceRate() {
-        return cy.get('.div-star').eq(0);
+    static get getGreatServiceRate() {
+        return cy.xpath('(//div[@class="div-star"])[1]');
     }
 
-    getGreatServiceText() {
-        return cy.get('.caption p').contains('Lorem ipsum');
+    static get getGreatServiceText() {
+        return cy.xpath('(//div[@class="caption"]/p[contains(text(), "Lorem")])[2]');
     }
 
-    getExcellentCustomerServiceTitle() {
-        return cy.get('.sub-heading').contains('Excellent Customer Service!');
+    static get getExcellentCustomerServiceTitle() {
+        return cy.xpath('//p[@class="sub-heading" and text()="Excellent Customer Service!"]');
     }
 
-    getExcellentCustomerServiceText() {
-        return cy.get('.caption p').contains('Lorem ipsum');
+    static get getExcellentCustomerServiceText() {
+        return cy.xpath('(//div[@class="caption"]/p[contains(text(), "Lorem")])[4]');
     }
 
-    getExcellentCustomerServiceRate() {
-        return cy.get('.div-star').eq(1);
+    static get getExcellentCustomerServiceRate() {
+        return cy.xpath('(//div[@class="div-star"])[2]');
     }
 
-    getCarouselImage() {
+    static get getCarouselImage() {
         return cy.get('.carousel-inner');
     }
 
-    getCarouselLeftButton() {
+    static get getCarouselLeftButton() {
         return cy.get('.left.carousel-control');
     }
 
-    getCarouselRightButton() {
+    static get getCarouselRightButton() {
         return cy.get('.right');
     }
 
-    getCarouselFirstImage() {
+    static get getCarouselFirstImage() {
         return cy.get('[src="../img/amp.svg"]');
     }
 
-    getCarouselSecondImage() {
+    static get getCarouselSecondImage() {
         return cy.get('[src="../img/boombox.svg"]');
     }
 
-    getCarouselThirdImage() {
+    static get getCarouselThirdImage() {
         return cy.get('[src="../img/nintendo.svg"]');
     }
 
-    getCarouselDotButton1() {
+    static get getCarouselDotButton1() {
         return cy.get('[data-slide-to="0"]');
     }
 
-    getCarouselDotButton2() {
+    static get getCarouselDotButton2() {
         return cy.get('[data-slide-to="1"]');
     }
 
-    getCarouselDotButton3() {
+    static get getCarouselDotButton3() {
         return cy.get('[data-slide-to="2"]');
     }
 
-    ///////////// Methods
-
-    clickLeftCarouselButton() {
-        this.getCarouselLeftButton().wait(1000).click();
-    }
-    
-    clickRightCarouselButton() {
-        this.getCarouselRightButton().wait(1000).click();
-    }
-
-    clickCarouselDotButton1() {
-        this.getCarouselDotButton1().wait(1000).click();
-    }
-
-    clickCarouselDotButton2() {
-        this.getCarouselDotButton2().wait(1000).click();
-    }
-
-    clickCarouselDotButton3() {
-        this.getCarouselDotButton3().wait(1000).click();
-    }
-
-    clickFindOutMoreButton() {
-        this.getFindOutMoreButton().click();
-    }
-
-    clickFindOutMoreModalButton() {
-        this.getFindOutModalButton().click();
-    }
-
-    clickCloseModalButton() {
-        this.getCloseModalButton().click();
-    }
-
-    clickExitModalButton() {
-        this.getExitModalButton().click();
-    }
 }
 
 export default HomePage;
