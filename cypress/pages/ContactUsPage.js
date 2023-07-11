@@ -24,7 +24,7 @@ class ContactUsPage extends BasePage {
     }
 
     static get getSubmitButton() {
-        return cy.get('#form_buttons').contains('SUBMIT');
+        return cy.get('input[type="submit"]');
     }
 
     static get getResetButton() {
@@ -36,7 +36,7 @@ class ContactUsPage extends BasePage {
     }
 
     static get getSuccessSubmitMessage(){
-        return cy.get('div#contact_reply > h1').contains('Thank You for your Message!');
+        return cy.get('//h1[text()="Thank You for your Message!"]');
     }
 
     static get getInvalidEmailError(){
