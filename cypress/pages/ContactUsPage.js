@@ -36,7 +36,7 @@ class ContactUsPage extends BasePage {
     }
 
     static get getSuccessSubmitMessage(){
-        return cy.get('//h1[text()="Thank You for your Message!"]');
+        return cy.xpath('//h1[text()="Thank You for your Message!"]');
     }
 
     static get getInvalidEmailError(){

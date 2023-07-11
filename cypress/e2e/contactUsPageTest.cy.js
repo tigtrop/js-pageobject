@@ -1,10 +1,10 @@
 /// <reference types="Cypress" />
 import HomePage from "../pages/HomePage";
 import BasePage from "../pages/BasePage";
-import OurProductsPage from "../pages/OurProducsPage";
+import OurProductsPage from "../pages/OurProductsPage";
 import ContactUsPage from "../pages/ContactUsPage";
 import { users } from "../test-data/users"
-import { ContactUsStep } from "../cypress/steps/contact-us-step";
+import { ContactUsStep } from "../cypress/steps/ContactUsStep";
 
 const basePage = new BasePage();
 const homePage = new HomePage();

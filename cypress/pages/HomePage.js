@@ -101,6 +101,9 @@ class HomePage extends BasePage {
         return cy.get('[data-slide-to="2"]');
     }
 
+    static getImageDiv(elem) {
+        return cy.xpath(`(//div[contains(@class, "item")])[${elem}]`);
+    }
 }
 
 export default HomePage;

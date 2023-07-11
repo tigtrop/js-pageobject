@@ -1,124 +1,55 @@
-/// <reference types="Cypress" />
 import HomePage from "../pages/HomePage";
 import BasePage from "../pages/BasePage";
-import OurProductsPage from "../pages/OurProducsPage";
+import OurProductsPage from "../pages/OurProductsPage";
 import ContactUsPage from "../pages/ContactUsPage";
+import { HomePageStep } from "../cypress/steps/homePageStep";
+import { GeneralStep } from "../cypress/steps/GeneralStep";
+import { OurProductsStep } from "../cypress/steps/OurProductsStep";
 
 const basePage = new BasePage();
 const homePage = new HomePage();
 const ourProductsPage = new OurProductsPage();
 const contactUsPage = new ContactUsPage();
+const homePageStep = new HomePageStep();
+const ourProductsStep = new OurProductsStep();
 
 describe('Home page testing', () => {
     beforeEach(() => {
-        homePage.visitHomePage();
+        homePageStep.visit();
     });
 
     it('Check the carousel left and right buttons', () => {
-        homePage.getCarouselDotButton1().should('have.class','active');
-        homePage.getCarouselFirstImage().should('be.visible');
-
-        homePage.clickRightCarouselButton();
-
-        homePage.getCarouselDotButton2().should('have.class','active');
-        homePage.getCarouselSecondImage().should('be.visible');
-
-        homePage.clickRightCarouselButton();
-
-        homePage.getCarouselDotButton3().should('have.class','active');
-        homePage.getCarouselThirdImage().should('be.visible');
-
-        homePage.clickRightCarouselButton();
-
-        homePage.getCarouselDotButton1().should('have.class','active');
-        homePage.getCarouselFirstImage().should('be.visible');
-
-        homePage.clickLeftCarouselButton();
-
-        homePage.getCarouselDotButton3().should('have.class','active');
-        homePage.getCarouselThirdImage().should('be.visible');
-
-        homePage.clickLeftCarouselButton();
-
-        homePage.getCarouselDotButton2().should('have.class','active');
-        homePage.getCarouselSecondImage().should('be.visible');
-
-        homePage.clickLeftCarouselButton();
-
-        homePage.getCarouselDotButton1().should('have.class','active');
-        homePage.getCarouselFirstImage().should('be.visible');
+        homePageStep.verifyLeftAndRightCarouselButtons();
     });
 
     it('Check that dot buttons are clickable', () => {
-        homePage.getCarouselDotButton1().should('have.class','active');
-        homePage.getCarouselFirstImage().should('be.visible');
-
-        homePage.clickCarouselDotButton2();
-
-        homePage.getCarouselDotButton2().should('have.class','active');
-        homePage.getCarouselSecondImage().should('be.visible');
-
-        homePage.clickCarouselDotButton3();
-
-        homePage.getCarouselDotButton3().should('have.class','active');
-        homePage.getCarouselThirdImage().should('be.visible');
-
-        homePage.clickCarouselDotButton1();
-
-        homePage.getCarouselDotButton1().should('have.class','active');
-        homePage.getCarouselFirstImage().should('be.visible');
+        homePageStep.verifyDotCarouselButtons();
     });
     
     it('Check navigation menu buttons', () => {
-        homePage.clickOurProductsButton();
-
-        ourProductsPage.getCategories().should('have.length', '8')
-
-        ourProductsPage.clickHomeButton();
-
-        homePage.getCarouselFirstImage().should('be.visible');
-
-        homePage.clickContactUsButton();
-
-        contactUsPage.getContactUsHeader().should('be.visible');
-
+        homePageStep.clickOurProductsButton();
+        ourProductsStep.clickHomeButton();        
+        homePageStep.clickContactUsButton();
         cy.go('back');
-
-        homePage.getCarouselFirstImage().should('be.visible');
-      
+        homePageStep.verifyHomePageLink();
     });
 
     it('Check "Find Out More" modal', () => {
-        homePage.clickFindOutMoreButton();
-        homePage.getWelcomeToSiteModal().should('be.visible');
+        homePageStep.clickFindOutMoreButton();
+        
+        homePageStep.clickFindOutMoreModalButton();
 
-        homePage.clickFindOutMoreModalButton();
-        homePage.getWelcomeToSiteModal().should('not.be.visible');
+        homePageStep.clickFindOutMoreButton();
 
-        homePage.clickFindOutMoreButton();
-        homePage.getWelcomeToSiteModal().should('be.visible');
+        homePageStep.clickCloseModalButton();
 
-        homePage.clickCloseModalButton();
-        homePage.getWelcomeToSiteModal().should('not.be.visible');
+        homePageStep.clickFindOutMoreButton();
 
-        homePage.clickFindOutMoreButton();
-        homePage.getWelcomeToSiteModal().should('be.visible');
-
-        homePage.clickExitModalButton();
-        homePage.getWelcomeToSiteModal().should('not.be.visible');
+        homePageStep.clickExitModalButton();
+        
     });
 
     it('Check the blocks are visible', () => {
-        homePage.getWhoAreWeTitle().should('be.visible');
-        homePage.getWhoAreWeText().should('be.visible');
-        homePage.getWhyChooseUsTitle().should('be.visible');
-        homePage.getWhyChooseUsText().should('be.visible');
-        homePage.getGreatServiceTitle().should('be.visible');
-        homePage.getGreatServiceText().should('be.visible');
-        homePage.getGreatServiceRate().should('be.visible');
-        homePage.getExcellentCustomerServiceTitle().should('be.visible');
-        homePage.getExcellentCustomerServiceText().should('be.visible');
-        homePage.getExcellentCustomerServiceRate().should('be.visible');
-        basePage.getFooter().should('be.visible');
+        homePageStep.verifyElements()
     });
 });

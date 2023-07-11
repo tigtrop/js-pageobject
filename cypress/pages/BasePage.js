@@ -1,32 +1,21 @@
 class BasePage {
 
-    getOurProductsButton() {
+    static get getOurProductsButton() {
         return cy.get('a[href="products.html"]');
     }
 
-    getContactUsButton() {
+    static get getContactUsButton() {
         return cy.get('a[href="../Contact-Us/contactus.html"]');
     }
     
-    getHomeButton() {
+    static get getHomeButton() {
         return cy.get('a[href="index.html"]');
     }
 
-    getFooter() {
+    static get getFooter() {
         return cy.get('footer p');
     }
 
-    clickHomeButton(){
-        this.getHomeButton().click();
-    }
-
-    clickOurProductsButton() {
-        this.getOurProductsButton().click();
-    }
-
-    clickContactUsButton() {
-        this.getContactUsButton().click();
-    }
 }
 
 export default BasePage;
