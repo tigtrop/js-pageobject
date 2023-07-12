@@ -1,25 +1,30 @@
 import DropdownPage from "../pages/dropdownPage";
-import { titles, dropdownId, dropdown1 } from "../test-data/dropdownData";
+import { titles, dropdownId, dropdown1, dropdown2, dropdown3 } from "../test-data/dropdownData";
+import { DropdownStep } from "../cypress/steps/DropdownStep";
 
-const dropdown = new DropdownPage();
+const dropdownStep = new DropdownStep;
 
 describe('Dropdown, checkbox, radiobutton tests', () => {
     beforeEach(() => {
-        dropdown.visit();
+        dropdownStep.visit();
     });
 
-    it('', () => {
-        dropdown.getBlockByTitle(titles[0]).should('exist');
-        dropdown.getBlockByTitle(titles[1]).should('exist');
-        dropdown.getBlockByTitle(titles[2]).should('exist');
-
-        dropdown1.forEach(value =>{
-            dropdown.getDropdownById(dropdownId[0]).should('exist').select(dropdown1[value]).invoke('val').should('eq', dropdown1[value]);
-        })
-
-        
-        // dropdown.getDropdownById(dropdownId[0]).should('exist').select(dropdown1[1]).invoke('val').should('eq', dropdown1[1]);
-        // dropdown.getDropdownById(dropdownId[0]).should('exist').select(dropdown1[2]).invoke('val').should('eq', dropdown1[2]);
-        // dropdown.getDropdownById(dropdownId[0]).should('exist').select(dropdown1[3]).invoke('val').should('eq', dropdown1[3]);
+    it('Verify dropdowns', () => {
+        dropdownStep.verifyDropdownTitle();
+        dropdownStep.verifyDropdowns(dropdown1, 0);
+        dropdownStep.verifyDropdowns(dropdown2, 1);
+        dropdownStep.verifyDropdowns(dropdown3, 2);
     });
+
+    it('Verify checkboxes', () => {
+        dropdownStep.verifyCheckboxTitle();
+        dropdownStep.selectCheckbox();
+    });
+
+    it('Verify radio buttons', () => {
+        dropdownStep.verifyRadioButtonTitle();
+        dropdownStep.verifyRadioButtonsNotChecked();
+        dropdownStep.verifyAllRadioButtonsCheck();
+    });
+         
 });
