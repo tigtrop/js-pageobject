@@ -1,5 +1,5 @@
 import DropdownPage from "../../pages/dropdownPage";
-import { checkboxes, dropdown1, dropdown2, dropdown3, dropdownId, radioButtons, titles } from "../../test-data/dropdownData";
+import { checkboxes, dropdown1, dropdown2, dropdown3, dropdownId, fruitsDropdown, radioButtons, titles, vegesRadioButtons } from "../../test-data/dropdownData";
 
 export class DropdownStep {
     visit() {
@@ -57,5 +57,19 @@ export class DropdownStep {
         this.verifyRadioButtonCheck(2);
         this.verifyRadioButtonCheck(3);
         this.verifyRadioButtonCheck(4);
+    }
+
+    verifyVegesRadioButtons() {
+        DropdownPage.getVegetablesRadioButtonsByValue(vegesRadioButtons[0]).click().should('be.checked');
+        DropdownPage.getVegetablesRadioButtonsByValue(vegesRadioButtons[1]).should('be.disabled');
+        DropdownPage.getVegetablesRadioButtonsByValue(vegesRadioButtons[2]).click().should('be.checked');
+        DropdownPage.getVegetablesRadioButtonsByValue(vegesRadioButtons[0]).should('not.be.checked');
+    }
+
+    verifyFruitsDropdown(){
+        DropdownPage.getFruitsDropdown.select(fruitsDropdown[0]).invoke('val').should('eq', fruitsDropdown[0]);
+        DropdownPage.getDisabledOption.should('be.disabled');
+        DropdownPage.getFruitsDropdown.select(fruitsDropdown[2]).invoke('val').should('eq', fruitsDropdown[2]);
+        DropdownPage.getFruitsDropdown.select(fruitsDropdown[3]).invoke('val').should('eq', fruitsDropdown[3]);
     }
 }

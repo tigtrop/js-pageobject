@@ -26,5 +26,12 @@ describe('Dropdown, checkbox, radiobutton tests', () => {
         dropdownStep.verifyRadioButtonsNotChecked();
         dropdownStep.verifyAllRadioButtonsCheck();
     });
-         
+       
+    it('Verify vegetables radiobuttons', () => {
+        dropdownStep.verifyVegesRadioButtons();
+    });
+
+    it('Verify fruits dropdown', () => {
+        dropdownStep.verifyFruitsDropdown();
+    });
 });

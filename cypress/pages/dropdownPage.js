@@ -17,6 +17,18 @@ class DropdownPage{
     static getRadioButtonById(id) {
         return cy.xpath(`//input[@value="${id}"]`);
     }
+
+    static getVegetablesRadioButtonsByValue(value) {
+        return cy.xpath(`//form[@id='radio-buttons-selected-disabled']/input[@value='${value}']`);
+    }
+
+    static get getFruitsDropdown() {
+        return cy.xpath(`//select[@id='fruit-selects']`);
+    }
+
+    static get getDisabledOption(){
+        return this.getFruitsDropdown.find('option[disabled]');
+    }
     
 }
 export default DropdownPage;
