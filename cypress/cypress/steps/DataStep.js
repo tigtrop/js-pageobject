@@ -1,0 +1,165 @@
+import DataPage from "../../pages/DataPage";
+import { table1 } from "../../test-data/tableData";
+import formData from "../../test-data/formData.json"
+import { badgesTitles, badgesValues } from "../../test-data/badgesData";
+import { pagination } from "../../test-data/dataPageData";
+
+
+class DataStep {
+    visit() {
+        DataPage.visit();
+        cy.url().should('contain', 'Data-Table');
+    }
+
+    verifyFirstNameFromTableWithID(id) {
+        DataPage.getTable(id).forEach((element, index) => {
+            DataPage.getFirstNameColumnIDTable(id, index+1).should('have.html', element.firstname);
+        })
+    }
+
+    verifyLastNameFromTable(id) {
+        DataPage.getTable(id).forEach((element, index) => {
+            DataPage.getLastNameColumn(id, index+1).should('have.html', element.lastname);
+        })
+    }
+
+    verifyAgeFromTable(id) {
+        DataPage.getTable(id).forEach((element, index) => {
+            DataPage.getAgeColumn(id, index+1).should('have.html', element.age);
+        })
+    }
+
+    randomFirstName(){
+        return formData[Math.floor(Math.random()* formData.length)].first_name;
+    }
+
+    randomLastName(){
+        return formData[Math.floor(Math.random()* formData.length)].last_name;
+    }
+
+    randomText(){
+        return formData[Math.floor(Math.random()* formData.length)].text;
+    }
+
+    verifyFirstNameField() {
+        const name = this.randomFirstName();
+        DataPage.getFirstNameField.type(name).should('have.value', name);
+    }
+
+    verifyLastNameField() {
+        const lastname = this.randomLastName();
+        DataPage.getLastNameField.type(lastname).should('have.value', lastname);
+    }
+
+    verifyTextField() {
+        const text = this.randomText();
+        DataPage.getTextField.type(text).should('have.text', text);
+    }
+    
+    verifyForm() {
+        this.verifyFirstNameField();
+        this.verifyLastNameField();
+        this.verifyTextField()
+    }
+
+    verifyBreadcrumbsHome() {
+        DataPage.getBreadcrumbsHome.should('be.visible').should('have.text', 'Home').click();
+        cy.url().should('contain', '#');
+    }
+
+    verifyBreadcrumbsAboutUs() {
+        DataPage.getBreadcrumbsAboutUs.should('be.visible').should('have.text', 'About Us').click();
+        cy.url().should('contain', '#');
+    }
+
+    verifyBreadcrumbsContactUs() {
+        DataPage.getBreadcrumbsContactUs.should('be.visible').should('have.text', 'Contact Us').and('have.class', 'active');
+    }
+
+    verifyBreadcrumbs() {
+        this.verifyBreadcrumbsHome();
+        this.verifyBreadcrumbsAboutUs();
+        this.verifyBreadcrumbsContactUs();
+    }
+
+    verifyBadges() {
+        badgesTitles.forEach((element, index) => {
+            DataPage.getBadgeTitle(index).should('contain', element);
+        })
+        badgesValues.forEach((element, index) => {
+            DataPage.getBadgeValue(index).invoke('text').should('contain', element);
+        })   
+    }
+
+    verifyPageButtons() {
+        pagination.forEach((element, index) => {
+            DataPage.getPageButton(index).click().invoke('text').should('contain', element)
+            cy.url().should('contain', '#');
+
+        })
+    }
+//////////////////////////////////////////////////////////////
+    selectColumn(selectorTable, columnName) {
+        DataPage.getTableColumnsNames(selectorTable)
+        .each(($el, index) => {
+
+            //cy.wrap($el).invoke('text').as('colName')
+            
+            cy.log(index);
+            let colNum = index;
+            cy.log(colNum);
+            cy.log($el.text())
+            if($el.text().includes(columnName)) {
+                cy.wrap(index).as('colIndex')
+                cy.log(index);
+                return false;
+            }
+            
+        //     {
+        //         cy.get('@colName').should('eq', columnName).then(()=> {
+        //             return index;
+        //         })               
+        //     } else {
+        //         cy.log('No such column');
+        //     }
+        
+        })
+    }
+
+
+///////////////////////////////////// Test
+
+    // verifyFirstNameFromTableUniversal(id) {
+    //     DataPage.getTable(id).forEach((element, index) => {
+    //         DataPage.getFirstNameColumnIDTable(id, index+1).should('have.html', element.firstname);
+    //     })
+    // }
+
+    // verifyFirstNameUniversal(selectorTable, columnName, data) {
+    //     this.selectColumn(selectorTable, columnName)
+    //     //cy.get('@colIndex').then($value => {
+    //         //let value = $value
+            
+    //         table1.forEach(element => {
+    //             DataPage.getTestColumnUniversal(1, 1, ).should('have.html', element.firstname);
+    //     //})
+    //     //cy.log(value);
+    // }
+    // )}
+
+
+    verifyColumnValues(selectorTable, columnName, columnIndex, data) {
+        this.selectColumn(selectorTable, columnName).as('columnIndex');
+        cy.get('@columnIndex').then($value => {
+            table1.forEach(element => {
+                DataPage.getTestColumn(columnIndex, 0).should('have.html', element.firstname);
+        })
+    }
+    )}
+
+    verifyTableWithID(id) {
+
+    }
+}
+
+export default DataStep;
