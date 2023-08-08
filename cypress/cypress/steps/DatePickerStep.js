@@ -84,21 +84,24 @@ class DataPickerStep {
         this.clickDatePicker();
         this.clickSwithToMonth();
         let monthID;
+        let run = true;
         DatePickerPage.getCurrentMonth.invoke('text').as('currentMonth');
         DatePickerPage.getMonth.each(($value, index) => {
-            cy.wrap($value).invoke('text').then($text => {
-                // cy.log($text);
-                cy.get('@currentMonth').then($currentMonth => {    
-                    if ($text === $currentMonth) {
-                        monthID = index;
-                        // cy.log(monthID);
-                        // cy.log($currentMonth);
-                        this.clickMonthByIndex(monthID+2);
-                        return false;  
-                    }                        
-                }
-                )
-            })
+        cy.then(() => {
+            if (run === false) return ;
+                cy.wrap($value).invoke('text').then($text => {
+                    cy.get('@currentMonth').then($currentMonth => {     
+                        if ($text === $currentMonth) {
+                            monthID = index;
+                            this.clickMonthByIndex(monthID+2);
+                            run = false;
+                        }                      
+                    })
+                })
+        })        
+            
+                
+            
         })
         this.clickDayByIndex(dayjs().format('DD'));
         this.checkSomeDate('', 1)
@@ -109,22 +112,25 @@ class DataPickerStep {
         this.clickSwithToMonth();
         this.clickSwitchToYear();
         let yearID;
+        let run = true;
         DatePickerPage.getCurrentYear.invoke('text').as('currentYearNumber');
         DatePickerPage.getYear.each(($value, index) => {
-            cy.wrap($value).invoke('text').then($text => {
-                cy.log($text);
-                
-                cy.get('@currentYearNumber').then($currentYearNumber => {
-                    cy.log($currentYearNumber);
-                    if ($text === $currentYearNumber) {
-                        yearID = index;
-                        // cy.log(yearID);
-                        // cy.log($currentYearNumber);
-                        this.clickYearByIndex(yearID+2);
-                        return false;  
-                    } 
+            cy.then(() => {
+                if(run === false) return false;
+                cy.wrap($value).invoke('text').then($text => {
+                    cy.log($text);
+                    
+                    cy.get('@currentYearNumber').then($currentYearNumber => {
+                        cy.log($currentYearNumber);
+                        if ($text === $currentYearNumber) {
+                            yearID = index;
+                            this.clickYearByIndex(yearID+2);
+                            run = false; 
+                        } 
+                    })
                 })
             })
+            
         })
         
         this.checkSomeDate('','', 1);
