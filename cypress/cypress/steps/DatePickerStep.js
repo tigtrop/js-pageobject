@@ -6,7 +6,7 @@ class DataPickerStep {
     visit() {
         DatePickerPage.visit();
         cy.url().should('contain', 'Datepicker');
-        //this.checkCurrentDay();
+        this.checkCurrentDay();
     }
 
     clickDatePicker() {
@@ -34,6 +34,7 @@ class DataPickerStep {
     }
 
     checkCurrentDay() {
+        cy.intercept('GET', 'http://www.webdriveruniversity.com/Datepicker*')
         let currentDate = dayjs().format('MM-DD-YYYY');
         DatePickerPage.getDatePickerInput.invoke('val').then($val => {
             cy.wrap($val).should('eq', currentDate);
