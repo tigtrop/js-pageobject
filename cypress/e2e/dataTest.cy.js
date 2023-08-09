@@ -48,6 +48,13 @@ describe('Data table test', () => {
     //     dataStep.verifyPageButtons();
     // });
 
-    
+    // it('Verify column names from talbe 3', () => {
+    //     dataStep.verifyColumnNamesTalbe3();
+    // });
 
+    // it('Verify table 3 values', () => {
+    //     dataStep.verifyIDColumnTable3();
+    //     dataStep.verifyNamesColumsTable3();
+    //     dataStep.verifyLastNamesColumnTable3();
+    // });
 });

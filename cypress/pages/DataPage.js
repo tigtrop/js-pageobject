@@ -98,6 +98,11 @@ class DataPage {
     static getPageButton(value){
         return cy.get(`li:nth-of-type(${value+1}) > .page-link`);
     }
+
+    static get getTeble3Header() {
+        return cy.get('.bg-primary > th');
+    }
+
 ////////////////////////////////// test
     static getFirstNameColumnUniversal(id, row) {
         return this.getTableWithID(id).find(`tr:nth-of-type(${row+1}) td:nth-of-type(${row})`);
@@ -113,6 +118,18 @@ class DataPage {
 
     static data1() {
         return table1;
+    }
+
+    static get getIDTable3() {
+        return cy.get('th[scope=row]');
+    }
+
+    static get getNameColumnFromTable3() {
+        return cy.get('tr.bg-info>td:nth-of-type(1)');
+    }
+
+    static get getLastNameColumnFromTable3() {
+        return cy.get('tr.bg-info>td:nth-of-type(2)');
     }
 }
 export default DataPage;

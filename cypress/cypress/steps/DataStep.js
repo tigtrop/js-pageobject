@@ -1,5 +1,5 @@
 import DataPage from "../../pages/DataPage";
-import { table1 } from "../../test-data/tableData";
+import { table1, table3, table3columns } from "../../test-data/tableData";
 import formData from "../../test-data/formData.json"
 import { badgesTitles, badgesValues } from "../../test-data/badgesData";
 import { pagination } from "../../test-data/dataPageData";
@@ -96,6 +96,38 @@ class DataStep {
             DataPage.getPageButton(index).click().invoke('text').should('contain', element)
             cy.url().should('contain', '#');
 
+        })
+    }
+
+    verifyColumnNamesTalbe3() {
+        DataPage.getTeble3Header.each(($value, index) =>{
+            cy.wrap($value).invoke('text').then($text => {
+                cy.wrap($text).should('eq', table3columns[index]);
+            })
+        })
+    }
+
+    verifyIDColumnTable3() {
+        DataPage.getIDTable3.each(($value, index) =>{
+            cy.wrap($value).invoke('text').then($text => {
+                cy.wrap($text).should('contain', table3[index].id);
+            })
+        })
+    }
+
+    verifyNamesColumsTable3() {
+        DataPage.getNameColumnFromTable3.each(($value, index) =>{
+            cy.wrap($value).invoke('text').then($text => {
+                cy.wrap($text).should('contain', table3[index].firstname);
+            })
+        })
+    }
+
+    verifyLastNamesColumnTable3() {
+        DataPage.getLastNameColumnFromTable3.each(($value, index) =>{
+            cy.wrap($value).invoke('text').then($text => {
+                cy.wrap($text).should('contain', table3[index].lastname);
+            })
         })
     }
 //////////////////////////////////////////////////////////////
