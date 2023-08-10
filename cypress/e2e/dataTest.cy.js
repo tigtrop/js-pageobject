@@ -57,4 +57,8 @@ describe('Data table test', () => {
     //     dataStep.verifyNamesColumsTable3();
     //     dataStep.verifyLastNamesColumnTable3();
     // });
+
+    it('Verify different buttons', () => {
+        
+    });
 });

@@ -130,6 +130,131 @@ class DataStep {
             })
         })
     }
+
+    clickLinkButton() {
+        DataPage.getLinkButton.click();
+    }
+
+    clickButton() {
+        DataPage.getButton.click();
+    }
+
+    clickInputButton() {
+        DataPage.getInputButton.click();
+    }
+
+    clickSubmitButton() {
+        DataPage.getSubmitButton.click();
+    }
+
+    clickResetButton() {
+        DataPage.getResetButton.click();
+    }
+
+    clickDangerButton() {
+        DataPage.getDangerButton.click();
+    }
+
+    clickWarningButton() {
+        DataPage.getWarningButton.click();
+    }
+
+    clickInfoButton() {
+        DataPage.getInfoButton.click();
+    }
+
+    clickAlertButton() {
+        DataPage.getAlertButton.click();
+    }
+
+    clickButton1() {
+        DataPage.getButton1.click();
+    }
+
+    clicktButton2() {
+        DataPage.getButton2.click();
+    }
+
+    clickButton3() {
+        DataPage.getButton3.click();
+    }
+
+    clickButton4() {
+        DataPage.getButton4.click();
+    }
+
+    verifyLinkButton() {
+        this.clickLinkButton();
+    }
+
+    verifyButton() {
+        this.clickButton();
+    }
+
+    verifyInputButton() {
+        this.clickInputButton();
+    }
+
+    verifySubmitButton() {
+        this.clickSubmitButton();
+    }
+
+    verifyResetButton() {
+        this.clickResetButton();
+    }
+
+    verifyDangerButton() {
+        this.clickDangerButton();
+    }
+
+    verifyWarningButton() {
+        this.clickWarningButton();
+    }
+
+    verifyInfoButton() {
+        this.clickInfoButton();
+    }
+
+    verifyAlertButton() {
+        this.clickAlertButton();
+    }
+
+    verifyButton1() {
+        this.clickButton1();
+    }
+
+    verifytButton2() {
+        this.clickButton2();
+    }
+
+    verifyButton3() {
+        this.clickButton3();
+    }
+
+    verifyButton4() {
+        this.clickButton4();
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //////////////////////////////////////////////////////////////
     selectColumn(selectorTable, columnName) {
         DataPage.getTableColumnsNames(selectorTable)

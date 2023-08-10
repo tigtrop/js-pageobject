@@ -120,6 +120,8 @@ class DataPage {
         return table1;
     }
 
+//////////////////////////////////////////////
+
     static get getIDTable3() {
         return cy.get('th[scope=row]');
     }
@@ -130,6 +132,60 @@ class DataPage {
 
     static get getLastNameColumnFromTable3() {
         return cy.get('tr.bg-info>td:nth-of-type(2)');
+    }
+
+//Buttons
+
+    static get getLinkButton() {
+        return cy.get('div > a[role]');
+    }
+
+    static get getButton() {
+        return cy.xpath('//button[text()="Button"]');
+    }
+
+    static get getInputButton() {
+        return cy.get('input[value=Input]');
+    }
+
+    static get getSubmitButton() {
+        return cy.get('input[value=Submit]');
+    }
+
+    static get getResetButton() {
+        return cy.get('input[value=Reset]');
+    }
+
+    static get getDangerButton() {
+        return cy.get('button.btn-outline-danger');
+    }
+
+    static get getWarningButton() {
+        return cy.get('button.btn-outline-warning');
+    }
+
+    static get getInfoButton() {
+        return cy.xpath('//button[text()="Info"]');
+    }
+
+    static get getAlertButton() {
+        return cy.xpath('//button[text()="Alert"]');
+    }
+
+    static get getButton1() {
+        return cy.xpath('//button[text()="Button-1"]');
+    }
+
+    static get getButton2() {
+        return cy.xpath('//button[text()="Button-2"]');
+    }
+
+    static get getButton3() {
+        return cy.xpath('//button[text()="Button-3"]');
+    }
+
+    static get getButton4() {
+        return cy.xpath('//button[text()="Button-4"]');
     }
 }
 export default DataPage;
