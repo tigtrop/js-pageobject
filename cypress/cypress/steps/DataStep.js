@@ -132,107 +132,108 @@ class DataStep {
     }
 
     clickLinkButton() {
-        DataPage.getLinkButton.click();
+        return DataPage.getLinkButton.click();
     }
 
     clickButton() {
-        DataPage.getButton.click();
+        return DataPage.getButton.click();
     }
 
     clickInputButton() {
-        DataPage.getInputButton.click();
+        return DataPage.getInputButton.click();
     }
 
     clickSubmitButton() {
-        DataPage.getSubmitButton.click();
+        return DataPage.getSubmitButton.click();
     }
 
     clickResetButton() {
-        DataPage.getResetButton.click();
+        return DataPage.getResetButton.click();
     }
 
     clickDangerButton() {
-        DataPage.getDangerButton.click();
+        return DataPage.getDangerButton.click();
     }
 
     clickWarningButton() {
-        DataPage.getWarningButton.click();
+        return DataPage.getWarningButton.click();
     }
 
     clickInfoButton() {
-        DataPage.getInfoButton.click();
+        return DataPage.getInfoButton.click();
     }
 
     clickAlertButton() {
-        DataPage.getAlertButton.click();
+        return DataPage.getAlertButton.click();
     }
 
     clickButton1() {
-        DataPage.getButton1.click();
+        return DataPage.getButton1.click();
     }
 
-    clicktButton2() {
-        DataPage.getButton2.click();
+    clickButton2() {
+        return DataPage.getButton2.click();
     }
 
     clickButton3() {
-        DataPage.getButton3.click();
+        return DataPage.getButton3.click();
     }
 
     clickButton4() {
-        DataPage.getButton4.click();
+        return DataPage.getButton4.click();
     }
 
     verifyLinkButton() {
-        this.clickLinkButton();
+        this.clickLinkButton().should('be.visible');
+        cy.url().should('contain', '#');
     }
 
     verifyButton() {
-        this.clickButton();
+        this.clickButton().should('be.visible');
     }
 
     verifyInputButton() {
-        this.clickInputButton();
+        this.clickInputButton().should('be.visible');
     }
 
     verifySubmitButton() {
-        this.clickSubmitButton();
+        this.clickSubmitButton().should('be.visible');
     }
 
     verifyResetButton() {
-        this.clickResetButton();
+        this.clickResetButton().should('be.visible');
     }
 
     verifyDangerButton() {
-        this.clickDangerButton();
+        this.clickDangerButton().should('be.visible');
     }
 
     verifyWarningButton() {
-        this.clickWarningButton();
+        this.clickWarningButton().should('have.class', 'disabled');
     }
 
     verifyInfoButton() {
-        this.clickInfoButton();
+        this.clickInfoButton().should('be.visible');
     }
 
     verifyAlertButton() {
-        this.clickAlertButton();
+        this.clickAlertButton().should('be.visible');
     }
 
     verifyButton1() {
-        this.clickButton1();
+        this.clickButton1().should('have.class', 'focus').and('have.class', 'active');
     }
 
-    verifytButton2() {
-        this.clickButton2();
+    verifyButton2() {
+        this.clickButton2().should('have.class', 'focus');
     }
 
     verifyButton3() {
-        this.clickButton3();
+        this.clickButton3().should('have.class', 'focus');
     }
 
     verifyButton4() {
-        this.clickButton4();
+        this.clickButton4().should('have.class', 'focus');
     }
     
 

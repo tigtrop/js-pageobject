@@ -59,6 +59,18 @@ describe('Data table test', () => {
     // });
 
     it('Verify different buttons', () => {
-        
+        dataStep.verifyLinkButton();
+        dataStep.verifyButton();
+        dataStep.verifyInputButton();
+        dataStep.verifySubmitButton();
+        dataStep.verifyResetButton();
+        dataStep.verifyDangerButton();
+        dataStep.verifyWarningButton();
+        dataStep.verifyInfoButton();
+        dataStep.verifyAlertButton();
+        dataStep.verifyButton1();
+        dataStep.verifyButton2();
+        dataStep.verifyButton3();
+        dataStep.verifyButton4();
     });
 });
