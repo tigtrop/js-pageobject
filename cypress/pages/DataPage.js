@@ -187,5 +187,23 @@ class DataPage {
     static get getButton4() {
         return cy.xpath('//button[text()="Button-4"]');
     }
+
+    //////////
+
+    static get getRandomTextBlock() {
+        return cy.get('.traversal-marked-text');
+    }
+
+    static get getMarkedText() {
+        return cy.get('.traversal-marked-text mark');
+    }
+
+    static get getQuotedText() {
+        return cy.get('.traversal-cite-text');
+    }
+
+    static get getItalicText() {
+        return cy.get('.traversal-cite-text cite');
+    }
 }
 export default DataPage;

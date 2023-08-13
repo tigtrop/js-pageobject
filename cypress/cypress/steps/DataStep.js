@@ -2,7 +2,7 @@ import DataPage from "../../pages/DataPage";
 import { table1, table3, table3columns } from "../../test-data/tableData";
 import formData from "../../test-data/formData.json"
 import { badgesTitles, badgesValues } from "../../test-data/badgesData";
-import { pagination } from "../../test-data/dataPageData";
+import { divText1, divText2, italicText, markedText, pagination, quoatedText } from "../../test-data/dataPageData";
 
 
 class DataStep {
@@ -234,6 +234,33 @@ class DataStep {
 
     verifyButton4() {
         this.clickButton4().should('have.class', 'focus');
+    }
+
+    /////////////////
+
+    verifyTextBlock() {
+        DataPage.getRandomTextBlock.should('be.visible')
+        .invoke('text').then(text => { 
+            expect(text).to.contain(divText1);
+            expect(text).to.contain(divText2);
+        })
+
+        DataPage.getMarkedText.should('be.visible').and('have.class', 'traversal-mark')
+        .invoke('text').then(text => {
+            expect(text).to.contain(markedText);
+        })
+
+        DataPage.getQuotedText.should('be.visible')
+        .invoke('text').then(text => {
+            const trimmedText = text.trim();
+            const modifiedText = trimmedText.replace(/\s{2,}/g, ' ');
+            expect(modifiedText).to.contain(quoatedText);
+        })
+
+        DataPage.getItalicText.should('be.visible').and('have.class', 'traversal-cite')
+        .invoke('text').then(text => {
+            expect(text).to.contain(italicText);
+        })
     }
     
 
