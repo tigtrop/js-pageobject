@@ -2,7 +2,7 @@ import DataPage from "../../pages/DataPage";
 import { table1, table3, table3columns } from "../../test-data/tableData";
 import formData from "../../test-data/formData.json"
 import { badgesTitles, badgesValues } from "../../test-data/badgesData";
-import { divText1, divText2, italicText, markedText, pagination, quoatedText } from "../../test-data/dataPageData";
+import { divText1, divText2, drinksList, fruitsList, italicText, jobsList, markedText, pagination, quoatedText, vegesList } from "../../test-data/dataPageData";
 
 
 class DataStep {
@@ -260,6 +260,37 @@ class DataStep {
         DataPage.getItalicText.should('be.visible').and('have.class', 'traversal-cite')
         .invoke('text').then(text => {
             expect(text).to.contain(italicText);
+        })
+    }
+
+    verifyDrinksList() {
+        DataPage.getDrinksList.each((element, index) => {
+            cy.wrap(element).invoke('text').should('be.eq', drinksList[index]);
+        })
+    }
+
+    verifyFritsList() {
+        DataPage.getFruitsListTitle.should('have.text', 'Fruits');
+        DataPage.getFruitsList.each((element, index) => {
+            cy.wrap(element).invoke('text').should('be.eq', fruitsList[index]);
+        })
+    }
+
+    verifyListTitle() {
+        DataPage.getListsTitle.should('have.text', 'Lists');
+    }
+
+    verifyVegesList() {
+        DataPage.getVegesListTitle.should('have.text', 'Vegetables')
+        DataPage.getVegesList.each((element, index) => {
+            cy.wrap(element).invoke('text').should('be.eq', vegesList[index]);
+        })
+    }
+
+    verifyJobsList() {
+        DataPage.getJobsListTitle.should('have.text', 'Types of Jobs')
+        DataPage.getJobsList.each((element, index) => {
+            cy.wrap(element).invoke('text').should('be.eq', jobsList[index]);
         })
     }
     

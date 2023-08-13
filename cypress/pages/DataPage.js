@@ -1,3 +1,4 @@
+import { fruitsList } from "../test-data/dataPageData";
 import { table1, table2 } from "../test-data/tableData";
 
 class DataPage {
@@ -204,6 +205,42 @@ class DataPage {
 
     static get getItalicText() {
         return cy.get('.traversal-cite-text cite');
+    }
+
+    ///////////// lists
+
+    static get getListsTitle() {
+        return cy.xpath('//h2[text()="Lists"]');
+    }
+
+    static get getDrinksList() {
+        return cy.get('.traversal-drinks-list > li');
+    }
+
+    static get getFruitsListTitle() {
+        return cy.get('#fruits');
+    }
+
+    static get getFruitsList() {
+        let endOfFruits = fruitsList.length + 1;
+        return cy.xpath(`//ul[@class="traversal-food-list"]/li[position() >= 2 and position() <= ${endOfFruits}]`);
+    }
+
+    static get getVegesList() {
+        let startOfVeges = fruitsList.length + 3;
+        return cy.xpath(`//ul[@class="traversal-food-list"]/li[position() >= ${startOfVeges}]`);
+    }
+    
+    static get getVegesListTitle() {
+        return cy.get('#veggie');
+    }
+
+    static get getJobsListTitle() {
+        return cy.get('#types-of-jobs');
+    }
+
+    static get getJobsList() {
+        return cy.get('ul.menu > li');
     }
 }
 export default DataPage;
