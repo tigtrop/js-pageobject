@@ -12,8 +12,8 @@ describe('Data table test', () => {
         dataStep.verifyFirstNameFromTableWithID('t01');
     });
 
-    it.only('Verify First Name column from table 2', () => {
-        dataStep.verifyFirstNameFromTable('t02');
+    it('Verify First Name column from table 2', () => {
+        dataStep.verifyFirstNameFromTableWithID('t02');
     });
 
     it('Verify Last Name column from table 1', () => {
@@ -32,7 +32,7 @@ describe('Data table test', () => {
         dataStep.verifyAgeFromTable('t02');
     });
 
-    it.only('Verify form', () => {
+    it('Verify form', () => {
         dataStep.verifyForm();
     });
 
@@ -58,7 +58,7 @@ describe('Data table test', () => {
         dataStep.verifyLastNamesColumnTable3();
     });
 
-    it.only('Verify different buttons', () => {
+    it('Verify different buttons', () => {
         dataStep.verifyLinkButton();
         dataStep.verifyButton();
         dataStep.verifyInputButton();

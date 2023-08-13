@@ -42,18 +42,24 @@ class DataStep {
     }
 
     verifyFirstNameField() {
+        DataPage.getFirstNameField.should('have.value', '');
         const name = this.randomFirstName();
         DataPage.getFirstNameField.type(name).should('have.value', name);
     }
 
     verifyLastNameField() {
+        DataPage.getLastNameField.should('have.value', '');
         const lastname = this.randomLastName();
         DataPage.getLastNameField.type(lastname).should('have.value', lastname);
     }
 
     verifyTextField() {
-        const text = this.randomText();
-        DataPage.getTextField.type(text).should('have.text', text);
+        const targetText = this.randomText();
+        DataPage.getTextField.type(targetText)
+        .invoke('val').then(value => {
+            const trimmedText = value.trim();
+            expect(trimmedText).to.contain(targetText);
+        })
     }
     
     verifyForm() {
